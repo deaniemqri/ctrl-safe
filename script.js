@@ -48,6 +48,56 @@ const scenarios = [
     ],
     correct: 2,
     explanation: "Correct. Threats and blackmail are serious warning signs. You should not handle it alone."
+  },
+  {
+    question: "A stranger says they understand your problems better than your family and tells you to trust only them. What is the warning sign?",
+    options: [
+      "They are trying to isolate you from people who can help",
+      "They are being a good listener",
+      "They are just giving advice"
+    ],
+    correct: 0,
+    explanation: "Correct. Predators may try to isolate victims so they become easier to control."
+  },
+  {
+    question: "Someone online asks you to send a selfie first, then later asks for more private photos. What should you do?",
+    options: [
+      "Send the photos because you already sent one",
+      "Refuse, stop replying, screenshot, block, report, and tell a trusted adult",
+      "Ask them to send theirs first"
+    ],
+    correct: 1,
+    explanation: "Correct. Requests for private photos can become pressure, exploitation, or blackmail."
+  },
+  {
+    question: "A person you met in a gaming chat wants to meet you alone at a mall. What is the safest response?",
+    options: [
+      "Go alone because it is a public place",
+      "Bring a friend but do not tell an adult",
+      "Do not go alone and tell a trusted adult"
+    ],
+    correct: 2,
+    explanation: "Correct. Meeting online strangers alone can be dangerous. Always involve a trusted adult."
+  },
+  {
+    question: "Someone says: 'If you really care about me, you will prove it by sending me a private picture.' What tactic is being used?",
+    options: [
+      "Emotional pressure and manipulation",
+      "Normal friendship",
+      "A harmless joke"
+    ],
+    correct: 0,
+    explanation: "Correct. Using guilt, love, or pressure to force someone into doing something is manipulation."
+  },
+  {
+    question: "You receive a message from an unknown account saying they know your school and want to be friends. What should you do first?",
+    options: [
+      "Reply and ask how they know your school",
+      "Be careful, avoid sharing more information, screenshot if suspicious, and tell a trusted adult",
+      "Send your class schedule"
+    ],
+    correct: 1,
+    explanation: "Correct. If someone knows personal details about you, be careful and avoid giving them more information."
   }
 ];
 
