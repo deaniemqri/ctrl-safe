@@ -8,22 +8,40 @@
 </head>
 <body>
 
-  <header>
-    <h1>CTRL+SAFE</h1>
-    <p>An interactive web guide to recognise online grooming and stay safe online.</p>
+  <nav class="navbar">
+    <div class="logo">CTRL+SAFE</div>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#redflags">Red Flags</a></li>
+      <li><a href="#safety">Safety Steps</a></li>
+      <li><a href="#quiz">Challenge</a></li>
+    </ul>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>CTRL+SAFE</h1>
+      <p>An interactive web guide that helps teenagers recognise online grooming and make safer digital decisions.</p>
+      <a href="#quiz" class="hero-btn">Start Safety Challenge</a>
+    </div>
   </header>
 
   <main>
-    <section class="hero">
-      <h2>Can you detect the red flags?</h2>
+
+    <section id="about" class="section">
+      <h2>About This Initiative</h2>
       <p>
-        Learn how online predators build trust, use pressure, and hide danger behind friendly messages.
-        This website helps teenagers practise safe decisions through short interactive scenarios.
+        CTRL+SAFE is a cybersecurity awareness initiative designed for teenagers aged 13 to 18.
+        It teaches users how to identify online grooming behaviours, understand warning signs,
+        and take practical steps to protect themselves online.
       </p>
-      <button onclick="startQuiz()">Start Safety Challenge</button>
+      <p>
+        Instead of only reading information, users learn through interactive scenarios that simulate
+        realistic online conversations and decision-making situations.
+      </p>
     </section>
 
-    <section class="info">
+    <section id="redflags" class="section">
       <h2>Online Grooming Red Flags</h2>
 
       <div class="cards">
@@ -43,24 +61,72 @@
         </div>
 
         <div class="card">
-          <h3>Pressure</h3>
-          <p>They pressure you to send photos, video call, meet up, or move to private chat.</p>
+          <h3>Gifts or Rewards</h3>
+          <p>They offer money, game credits, gifts, or favours to gain your trust.</p>
+        </div>
+
+        <div class="card">
+          <h3>Private Chat</h3>
+          <p>They ask you to move from public spaces to private messaging apps.</p>
+        </div>
+
+        <div class="card">
+          <h3>Pressure or Threats</h3>
+          <p>They pressure, guilt-trip, or threaten you to control your actions.</p>
         </div>
       </div>
     </section>
 
-    <section class="quiz">
-      <h2>Scenario Challenge</h2>
-      <div id="quiz-box">
-        <p id="question">Click the button above to begin.</p>
-        <div id="options"></div>
-        <p id="feedback"></p>
+    <section id="safety" class="section">
+      <h2>CTRL+SAFE Safety Steps</h2>
+
+      <div class="steps">
+        <div class="step">
+          <h3>1. Stop</h3>
+          <p>Stop replying if the conversation feels uncomfortable, secretive, or unsafe.</p>
+        </div>
+
+        <div class="step">
+          <h3>2. Screenshot</h3>
+          <p>Save evidence such as messages, usernames, photos, links, or account profiles.</p>
+        </div>
+
+        <div class="step">
+          <h3>3. Block</h3>
+          <p>Block the person so they cannot continue contacting or pressuring you.</p>
+        </div>
+
+        <div class="step">
+          <h3>4. Report</h3>
+          <p>Report the account or message using the platform’s reporting tools.</p>
+        </div>
+
+        <div class="step">
+          <h3>5. Tell</h3>
+          <p>Tell a trusted adult, parent, teacher, counsellor, or guardian immediately.</p>
+        </div>
       </div>
     </section>
+
+    <section id="quiz" class="section quiz-section">
+      <h2>Scenario Safety Challenge</h2>
+      <p class="quiz-intro">
+        Read each situation carefully and choose the safest response.
+      </p>
+
+      <div id="quiz-box">
+        <p id="progress"></p>
+        <h3 id="question">Click the button below to begin.</h3>
+        <div id="options"></div>
+        <p id="feedback"></p>
+        <button id="start-btn" onclick="startQuiz()">Start Challenge</button>
+      </div>
+    </section>
+
   </main>
 
   <footer>
-    <p>Remember: Stop. Screenshot. Block. Report. Tell a trusted adult.</p>
+    <p>CTRL+SAFE | Stop. Screenshot. Block. Report. Tell a trusted adult.</p>
   </footer>
 
   <script src="script.js"></script>

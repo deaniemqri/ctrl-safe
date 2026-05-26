@@ -28,6 +28,26 @@ const scenarios = [
     ],
     correct: 0,
     explanation: "Correct. School, address, and daily routine are private information."
+  },
+  {
+    question: "An online friend says they want to move the chat to a private messaging app because 'it is safer from adults'. What should you do?",
+    options: [
+      "Move to the private app immediately",
+      "Be cautious because moving to private chat can be a grooming tactic",
+      "Send them your other social media accounts"
+    ],
+    correct: 1,
+    explanation: "Correct. Moving conversations to private spaces can make it harder for others to notice unsafe behaviour."
+  },
+  {
+    question: "Someone threatens to expose your private messages unless you send more photos. What is the safest action?",
+    options: [
+      "Send more photos so they stop threatening you",
+      "Delete everything and stay silent",
+      "Save evidence, block/report the person, and tell a trusted adult immediately"
+    ],
+    correct: 2,
+    explanation: "Correct. Threats and blackmail are serious warning signs. You should not handle it alone."
   }
 ];
 
@@ -37,14 +57,19 @@ let score = 0;
 function startQuiz() {
   currentQuestion = 0;
   score = 0;
+
+  document.getElementById("start-btn").style.display = "none";
+
   showQuestion();
 }
 
 function showQuestion() {
+  const progressElement = document.getElementById("progress");
   const questionElement = document.getElementById("question");
   const optionsElement = document.getElementById("options");
   const feedbackElement = document.getElementById("feedback");
 
+  progressElement.textContent = `Question ${currentQuestion + 1} of ${scenarios.length}`;
   questionElement.textContent = scenarios[currentQuestion].question;
   optionsElement.innerHTML = "";
   feedbackElement.textContent = "";
@@ -60,6 +85,11 @@ function showQuestion() {
 
 function checkAnswer(selectedIndex) {
   const feedbackElement = document.getElementById("feedback");
+  const optionButtons = document.querySelectorAll(".option-btn");
+
+  optionButtons.forEach(button => {
+    button.disabled = true;
+  });
 
   if (selectedIndex === scenarios[currentQuestion].correct) {
     score++;
@@ -78,16 +108,31 @@ function checkAnswer(selectedIndex) {
     } else {
       showResult();
     }
-  }, 1800);
+  }, 2200);
 }
 
 function showResult() {
+  const progressElement = document.getElementById("progress");
   const questionElement = document.getElementById("question");
   const optionsElement = document.getElementById("options");
   const feedbackElement = document.getElementById("feedback");
+  const startButton = document.getElementById("start-btn");
 
-  questionElement.textContent = `Challenge completed! Your score is ${score}/${scenarios.length}.`;
+  progressElement.textContent = "Challenge Completed";
+  questionElement.textContent = `Your score is ${score}/${scenarios.length}`;
   optionsElement.innerHTML = "";
-  feedbackElement.textContent = "Remember the CTRL+SAFE rule: Stop, Screenshot, Block, Report, and Tell a trusted adult.";
-  feedbackElement.style.color = "#2563eb";
+
+  if (score === scenarios.length) {
+    feedbackElement.textContent = "Excellent! You identified all red flags correctly.";
+    feedbackElement.style.color = "green";
+  } else if (score >= 3) {
+    feedbackElement.textContent = "Good job! You understand many warning signs, but keep learning and stay alert.";
+    feedbackElement.style.color = "#2563eb";
+  } else {
+    feedbackElement.textContent = "Keep learning. Online grooming can be difficult to spot, so remember: Stop, Screenshot, Block, Report, and Tell a trusted adult.";
+    feedbackElement.style.color = "red";
+  }
+
+  startButton.textContent = "Restart Challenge";
+  startButton.style.display = "inline-block";
 }
