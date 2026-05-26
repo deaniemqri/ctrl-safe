@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CTRL+SAFE</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <h1>CTRL+SAFE</h1>
+    <p>An interactive web guide to recognise online grooming and stay safe online.</p>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h2>Can you detect the red flags?</h2>
+      <p>
+        Learn how online predators build trust, use pressure, and hide danger behind friendly messages.
+        This website helps teenagers practise safe decisions through short interactive scenarios.
+      </p>
+      <button onclick="startQuiz()">Start Safety Challenge</button>
+    </section>
+
+    <section class="info">
+      <h2>Online Grooming Red Flags</h2>
+
+      <div class="cards">
+        <div class="card">
+          <h3>Secrecy</h3>
+          <p>They ask you to hide the conversation from parents, teachers, or friends.</p>
+        </div>
+
+        <div class="card">
+          <h3>Too Much Attention</h3>
+          <p>They give excessive compliments or make you feel special too quickly.</p>
+        </div>
+
+        <div class="card">
+          <h3>Personal Questions</h3>
+          <p>They ask about your school, address, routine, family problems, or private life.</p>
+        </div>
+
+        <div class="card">
+          <h3>Pressure</h3>
+          <p>They pressure you to send photos, video call, meet up, or move to private chat.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quiz">
+      <h2>Scenario Challenge</h2>
+      <div id="quiz-box">
+        <p id="question">Click the button above to begin.</p>
+        <div id="options"></div>
+        <p id="feedback"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Remember: Stop. Screenshot. Block. Report. Tell a trusted adult.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
