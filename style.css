@@ -618,3 +618,38 @@ footer {
     margin-top: 20px;
   }
 }
+
+/* Fix About infographic overflow on portrait / smaller screens */
+body {
+  overflow-x: hidden;
+}
+
+.infographic-row {
+  width: 100%;
+}
+
+.info-stat {
+  min-width: 0;
+}
+
+/* Tablet / smaller laptop */
+@media (max-width: 900px) {
+  .infographic-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Phone / portrait view */
+@media (max-width: 650px) {
+  .infographic-row {
+    grid-template-columns: 1fr !important;
+  }
+
+  .info-stat {
+    padding: 16px;
+  }
+
+  .info-stat p {
+    font-size: 13px;
+  }
+}
