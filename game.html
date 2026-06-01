@@ -176,38 +176,29 @@
 
   <!-- LANDING -->
   <div id="landing" class="screen active">
-    <div class="brand-badge">🛡️ Online Safety Initiative · v1.0</div>
+    <div class="brand-badge">CTRL + SAFE</div>
     <h1 class="hero-title">Would You<br>Trust Them?</h1>
     <p class="hero-sub">Can you spot an online predator before it's too late? Learn to protect yourself — one chat at a time.</p>
     <div class="score-display">
       <div class="score-pill"><span class="dot" style="background:var(--safe)"></span><span id="stat-score">Score: 0</span></div>
       <div class="score-pill"><span class="dot" style="background:var(--accent)"></span><span id="stat-badges">Badges: 0</span></div>
     </div>
-    <div class="nav-grid">
-      <button class="nav-btn primary" onclick="gotoScreen('chat-sim'); resetChat()">
-        <div class="icon" style="background:rgba(124,92,252,0.2)">💬</div>
-        Start Chat Challenge
-      </button>
-      <button class="nav-btn" onclick="gotoScreen('mini-games')">
-        <div class="icon" style="background:rgba(252,92,125,0.15)">🎮</div>
-        <div><div style="font-size:13px;font-weight:600">Mini Games</div><div style="font-size:11px;color:var(--txt2)">3 challenges</div></div>
-      </button>
-      <button class="nav-btn" onclick="gotoScreen('quiz-screen'); startQuiz()">
-        <div class="icon" style="background:rgba(92,252,184,0.12)">⚡</div>
-        <div><div style="font-size:13px;font-weight:600">Safety Quiz</div><div style="font-size:11px;color:var(--txt2)">10 questions</div></div>
-      </button>
-      <button class="nav-btn" onclick="gotoScreen('tips-screen')">
-        <div class="icon" style="background:rgba(252,183,0,0.12)">💡</div>
-        <div><div style="font-size:13px;font-weight:600">Safety Tips</div><div style="font-size:11px;color:var(--txt2)">Key knowledge</div></div>
-      </button>
-      <button class="nav-btn" onclick="gotoScreen('help-screen')" style="grid-column:span 2; border-color:rgba(252,61,92,0.3)">
-        <div class="icon" style="background:rgba(252,61,92,0.1)">🆘</div>
-        <div><div style="font-size:13px;font-weight:600;color:#ff8099">Emergency Help</div><div style="font-size:11px;color:var(--txt2)">Resources & contacts</div></div>
-      </button>
-    </div>
-  </div>
+   <div class="nav-grid game-menu-grid">
+  <button class="nav-btn primary" onclick="gotoScreen('chat-sim'); resetChat()">
+    <div class="icon" style="background:rgba(124,92,252,0.2)">💬</div>
+    Start Chat Challenge
+  </button>
 
-  <!-- CHAT SIMULATOR -->
+  <button class="nav-btn primary" onclick="gotoScreen('redflag-game'); startRedFlag()">
+    <div class="icon" style="background:rgba(252,183,0,0.12)">🚩</div>
+    Spot the Red Flag
+  </button>
+</div>
+
+</div>
+<!-- END LANDING -->
+
+<!-- CHAT SIMULATOR -->
   <div id="chat-sim" class="screen" style="position:relative">
     <div class="chat-header">
       <button class="back-btn" onclick="gotoScreen('landing')">←</button>
@@ -243,42 +234,10 @@
     </div>
   </div>
 
-  <!-- MINI GAMES MENU -->
-  <div id="mini-games" class="screen" style="padding:16px;gap:10px">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-      <button class="back-btn" onclick="gotoScreen('landing')" style="font-size:16px">←</button>
-      <div><div class="section-title">Mini Games</div><div class="section-sub">Test your street smarts</div></div>
-    </div>
-    <div class="game-card" onclick="gotoScreen('redflag-game'); startRedFlag()">
-      <div class="game-icon" style="background:rgba(252,183,0,0.12)">🚩</div>
-      <div class="game-info">
-        <div class="game-title">Spot the Red Flag</div>
-        <div class="game-desc">Identify suspicious signs in fake social media profiles before time runs out</div>
-      </div>
-      <div class="game-tag">TIMED</div>
-    </div>
-    <div class="game-card" onclick="gotoScreen('quiz-screen'); startQuiz()">
-      <div class="game-icon" style="background:rgba(92,252,184,0.12)">⚡</div>
-      <div class="game-info">
-        <div class="game-title">Safe or Unsafe?</div>
-        <div class="game-desc">Fast-fire quiz — decide if behaviors are safe or dangerous online</div>
-      </div>
-      <div class="game-tag">QUIZ</div>
-    </div>
-    <div class="game-card" onclick="gotoScreen('profile-builder'); initProfileBuilder()">
-      <div class="game-icon" style="background:rgba(124,92,252,0.15)">🔐</div>
-      <div class="game-info">
-        <div class="game-title">Build Your Safe Profile</div>
-        <div class="game-desc">Rate your profile settings — learn what makes you vulnerable online</div>
-      </div>
-      <div class="game-tag">BUILD</div>
-    </div>
-  </div>
-
   <!-- RED FLAG GAME -->
   <div id="redflag-game" class="screen" style="padding:16px;gap:10px">
     <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-      <button class="back-btn" onclick="gotoScreen('mini-games')" style="font-size:16px">←</button>
+      <button class="back-btn" onclick="gotoScreen('landing')" style="font-size:16px">←</button>
       <div><div class="section-title">🚩 Spot the Red Flags</div><div class="section-sub" id="rf-instruction">Tap all the suspicious things about this profile</div></div>
     </div>
     <div class="timer-bar-wrap"><div class="timer-bar-fill" id="timer-bar" style="width:100%"></div></div>
@@ -287,62 +246,7 @@
     <div style="font-size:12px;color:var(--txt2);text-align:center;margin-top:8px" id="rf-result"></div>
   </div>
 
-  <!-- QUIZ -->
-  <div id="quiz-screen" class="screen" style="padding:16px;gap:12px">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px">
-      <div style="display:flex;align-items:center;gap:10px">
-        <button class="back-btn" onclick="gotoScreen('landing')" style="font-size:16px">←</button>
-        <div class="section-title">Safety Quiz</div>
-      </div>
-      <div class="quiz-progress" id="quiz-progress"></div>
-    </div>
-    <div class="quiz-question" id="quiz-q">Loading...</div>
-    <div class="quiz-options" id="quiz-opts"></div>
-    <div style="font-size:12px;color:var(--txt2);min-height:40px;line-height:1.5;padding:8px;background:var(--surface2);border-radius:10px;display:none" id="quiz-explain"></div>
-    <button class="continue-btn" id="quiz-next-btn" style="display:none;margin-top:auto" onclick="nextQuizQ()">Next Question →</button>
-  </div>
-
-  <!-- PROFILE BUILDER -->
-  <div id="profile-builder" class="screen scrollable" style="padding:16px;gap:10px;max-height:100vh">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-      <button class="back-btn" onclick="gotoScreen('mini-games')" style="font-size:16px">←</button>
-      <div><div class="section-title">🔐 Build Your Safe Profile</div><div class="section-sub">Toggle settings to see your safety rating</div></div>
-    </div>
-    <div id="profile-settings"></div>
-    <div style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--radius);padding:14px">
-      <div style="font-size:12px;color:var(--txt2);margin-bottom:6px;font-family:'DM Mono',monospace">PROFILE SAFETY RATING</div>
-      <div style="display:flex;align-items:center;gap:12px">
-        <div style="flex:1;height:8px;background:var(--surface3);border-radius:100px;overflow:hidden">
-          <div id="profile-bar" style="height:100%;border-radius:100px;transition:width 0.4s,background 0.4s;width:50%;background:var(--warn)"></div>
-        </div>
-        <div style="font-family:'DM Mono',monospace;font-size:1.1rem;font-weight:600" id="profile-score-txt">50%</div>
-      </div>
-      <div style="font-size:12px;margin-top:8px" id="profile-rating-label">⚠️ Moderate Risk</div>
-    </div>
-  </div>
-
-  <!-- TIPS -->
-  <div id="tips-screen" class="screen scrollable" style="padding:16px;gap:8px;max-height:100vh">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
-      <button class="back-btn" onclick="gotoScreen('landing')" style="font-size:16px">←</button>
-      <div><div class="section-title">💡 Online Safety Tips</div><div class="section-sub">Essential knowledge to stay safe</div></div>
-    </div>
-    <div id="tips-list"></div>
-  </div>
-
-  <!-- HELP -->
-  <div id="help-screen" class="screen scrollable" style="padding:16px;gap:10px;max-height:100vh">
-    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-      <button class="back-btn" onclick="gotoScreen('landing')" style="font-size:16px">←</button>
-      <div class="section-title" style="color:#ff8099">🆘 Emergency Help</div>
-    </div>
-    <div class="emergency-card">
-      <div class="emergency-title">If you feel unsafe RIGHT NOW</div>
-      <div class="emergency-body">Tell a trusted adult immediately — a parent, teacher, or school counselor. You are NOT in trouble. You have done nothing wrong. It is always safe to report.</div>
-    </div>
-    <div id="help-resources"></div>
-  </div>
-
+  
   <!-- RESULTS -->
   <div id="results-screen" class="screen">
     <div class="result-emoji" id="result-emoji">🛡️</div>
@@ -511,199 +415,163 @@ function showResults(emoji, title, score, msg) {
 }
 
 // ===== RED FLAG GAME =====
-const rfProfile = {
-  emoji: '😎', name: 'CoolDude_Alex', handle: '@alex.gamer.2010',
-  posts: '3', followers: '0', following: '4782',
-  bio: 'Just a chill guy who loves gaming 🎮 I always reply to DMs! DM me for free Robux 👀 I never post pics but trust me bro. Your parents wouldn\'t get it.',
-  realFlags: [
-    { label: 'Few/no real photos', key: 'photos', correct: true },
-    { label: 'Asking for DMs immediately', key: 'dms', correct: true },
-    { label: 'Offering free gifts (scam)', key: 'gifts', correct: true },
-    { label: '"Your parents wouldn\'t get it"', key: 'parents', correct: true },
-    { label: 'Following thousands of people', key: 'follow', correct: true },
-    { label: 'Has a username', key: 'username', correct: false },
-    { label: 'Likes gaming', key: 'gaming', correct: false },
-    { label: 'Has an emoji in bio', key: 'emoji', correct: false },
-  ]
-};
-let rfTimer, rfTimeLeft = 30, rfFound = 0;
+const rfProfiles = [
+  {
+    emoji: '😎',
+    name: 'CoolDude_AimanHarun',
+    handle: '@Manrun.gamer.2010',
+    posts: '3',
+    followers: '0',
+    following: '4782',
+    bio: 'Just a chill guy who loves gaming 🎮 I always reply to DMs! DM me for free Robux 👀 I never post pics but trust me bro. Your parents would not get it.',
+    realFlags: [
+      { label: 'Few/no real photos', correct: true },
+      { label: 'Asking for DMs immediately', correct: true },
+      { label: 'Offering free gifts', correct: true },
+      { label: '"Your parents would not get it"', correct: true },
+      { label: 'Following thousands of people', correct: true },
+      { label: 'Has a username', correct: false },
+      { label: 'Likes gaming', correct: false },
+      { label: 'Has an emoji in bio', correct: false }
+    ]
+  },
+  {
+    emoji: '🎀',
+    name: 'LovelyyNariesyaAuni',
+    handle: '@mira_supports_you',
+    posts: '0',
+    followers: '12',
+    following: '3921',
+    bio: 'I help teens who feel lonely 💕 DM me anytime. I understand you better than your parents. Our chats can be our little secret 🤫',
+    realFlags: [
+      { label: 'No posts or proof of identity', correct: true },
+      { label: 'Targets lonely teenagers', correct: true },
+      { label: 'Claims to understand you better than parents', correct: true },
+      { label: 'Asks for secret conversations', correct: true },
+      { label: 'Following many accounts', correct: true },
+      { label: 'Uses a friendly name', correct: false },
+      { label: 'Uses heart emoji', correct: false },
+      { label: 'Has a profile handle', correct: false }
+    ]
+  }
+];
+
+let rfProfile;
+
+let rfTimer;
+let rfTimeLeft = 30;
+let rfFound = 0;
 
 function startRedFlag() {
-  clearInterval(rfTimer); rfFound = 0; rfTimeLeft = 30;
-  document.getElementById('rf-result').textContent = '';
-  document.getElementById('timer-bar').style.width = '100%';
-  document.getElementById('timer-bar').style.background = 'var(--warn)';
-  const p = document.getElementById('rf-profile');
-  p.innerHTML = `<div class="profile-top"><div class="profile-avatar">${rfProfile.emoji}</div><div><div class="profile-name">${rfProfile.name}</div><div class="profile-handle">${rfProfile.handle}</div><div class="profile-stats"><div class="p-stat"><div class="num">${rfProfile.posts}</div><div class="lbl">Posts</div></div><div class="p-stat"><div class="num">${rfProfile.followers}</div><div class="lbl">Followers</div></div><div class="p-stat"><div class="num">${rfProfile.following}</div><div class="lbl">Following</div></div></div></div></div><div class="profile-bio">${rfProfile.bio}</div>`;
-  const btns = document.getElementById('flag-btns'); btns.innerHTML = '';
-  rfProfile.realFlags.forEach(f => {
-    const btn = document.createElement('button'); btn.className = 'flag-btn'; btn.setAttribute('data-key', f.key);
-    btn.innerHTML = '🚩 ' + f.label; btn.onclick = () => tapFlag(f, btn); btns.appendChild(btn);
+  clearInterval(rfTimer);
+  rfFound = 0;
+  rfTimeLeft = 30;
+  rfProfile = rfProfiles[Math.floor(Math.random() * rfProfiles.length)];
+
+  const resultElement = document.getElementById('rf-result');
+  const timerBar = document.getElementById('timer-bar');
+  const profileElement = document.getElementById('rf-profile');
+  const buttonsElement = document.getElementById('flag-btns');
+
+  resultElement.textContent = '';
+  timerBar.style.width = '100%';
+  timerBar.style.background = 'var(--warn)';
+
+  profileElement.innerHTML = `
+    <div class="profile-top">
+      <div class="profile-avatar">${rfProfile.emoji}</div>
+      <div>
+        <div class="profile-name">${rfProfile.name}</div>
+        <div class="profile-handle">${rfProfile.handle}</div>
+        <div class="profile-stats">
+          <div class="p-stat">
+            <div class="num">${rfProfile.posts}</div>
+            <div class="lbl">Posts</div>
+          </div>
+          <div class="p-stat">
+            <div class="num">${rfProfile.followers}</div>
+            <div class="lbl">Followers</div>
+          </div>
+          <div class="p-stat">
+            <div class="num">${rfProfile.following}</div>
+            <div class="lbl">Following</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="profile-bio">${rfProfile.bio}</div>
+  `;
+
+  buttonsElement.innerHTML = '';
+
+  rfProfile.realFlags.forEach(flag => {
+    const button = document.createElement('button');
+    button.className = 'flag-btn';
+    button.innerHTML = '🚩 ' + flag.label;
+    button.onclick = () => tapFlag(flag, button);
+    buttonsElement.appendChild(button);
   });
-  const total = rfProfile.realFlags.filter(f => f.correct).length;
+
+  const totalFlags = rfProfile.realFlags.filter(flag => flag.correct).length;
+
   rfTimer = setInterval(() => {
     rfTimeLeft--;
-    document.getElementById('timer-bar').style.width = ((rfTimeLeft/30)*100) + '%';
-    if (rfTimeLeft <= 10) document.getElementById('timer-bar').style.background = 'var(--danger)';
-    if (rfTimeLeft <= 0) { clearInterval(rfTimer); endRedFlag(total); }
+    timerBar.style.width = ((rfTimeLeft / 30) * 100) + '%';
+
+    if (rfTimeLeft <= 10) {
+      timerBar.style.background = 'var(--danger)';
+    }
+
+    if (rfTimeLeft <= 0) {
+      clearInterval(rfTimer);
+      endRedFlag(totalFlags);
+    }
   }, 1000);
 }
 
-function tapFlag(flag, btn) {
-  if (btn.classList.contains('found') || btn.classList.contains('wrong')) return;
-  const total = rfProfile.realFlags.filter(f => f.correct).length;
-  if (flag.correct) {
-    btn.classList.add('found'); rfFound++; gameState.totalScore += 10;
-    if (rfFound >= total) { clearInterval(rfTimer); endRedFlag(total); }
-  } else { btn.classList.add('wrong'); setTimeout(() => btn.classList.remove('wrong'), 600); gameState.totalScore = Math.max(0, gameState.totalScore - 5); }
-}
+function tapFlag(flag, button) {
+  if (button.classList.contains('found') || button.classList.contains('wrong')) {
+    return;
+  }
 
-function endRedFlag(total) {
-  const resultEl = document.getElementById('rf-result');
-  if (rfFound >= total) { resultEl.textContent = '🏆 You found all ' + total + ' red flags! Badge earned: 🔍 Scam Detector'; resultEl.style.color = 'var(--safe)'; gameState.badges.push('🔍 Scam Detector'); }
-  else { resultEl.textContent = 'Found ' + rfFound + '/' + total + ' red flags. Keep practicing!'; resultEl.style.color = 'var(--txt2)'; }
+  const totalFlags = rfProfile.realFlags.filter(flag => flag.correct).length;
+
+  if (flag.correct) {
+    button.classList.add('found');
+    rfFound++;
+    gameState.totalScore += 10;
+
+    if (rfFound >= totalFlags) {
+      clearInterval(rfTimer);
+      endRedFlag(totalFlags);
+    }
+  } else {
+    button.classList.add('wrong');
+    gameState.totalScore = Math.max(0, gameState.totalScore - 5);
+
+    setTimeout(() => {
+      button.classList.remove('wrong');
+    }, 600);
+  }
+
   updateLandingStats();
 }
 
-// ===== QUIZ =====
-const quizData = [
-  { q: "Sharing your home address in your public bio is fine if you only have a few followers.", a: 1, options: ["True — not many people see it", "False — address is never safe to share publicly"], explain: "Even small audiences can include strangers. Your address tells people exactly where to find you in real life. Never post it publicly." },
-  { q: "Someone online asks to keep your friendship secret from your parents. This is:", a: 1, options: ["Normal — parents can be overprotective", "A major red flag called 'isolation'"], explain: "Secrecy from parents is one of the biggest grooming warning signs. Safe friendships never need to be hidden from the people who protect you." },
-  { q: "Your digital footprint includes:", a: 2, options: ["Only things you post yourself", "Only photos and videos", "Everything you post, like, comment, or share online — forever"], explain: "Your digital footprint is permanent. Even deleted posts can be screenshotted and saved. Think before you post anything online." },
-  { q: "Someone offers you free gaming credits if you send them a photo. You should:", a: 2, options: ["It's probably fine — free stuff is cool!", "Send only a face photo, nothing else", "Block, report, and tell a trusted adult immediately"], explain: "Offering gifts is a grooming tactic to lower your guard. Never send ANY photos to strangers online, no matter what they offer." },
-  { q: "A stranger says you're mature for your age and they 'really get you' unlike your parents. This is:", a: 1, options: ["Sweet — they understand me", "A manipulation tactic called flattery/love bombing"], explain: "Predators use flattery to build false intimacy quickly. This is called 'love bombing' — a classic grooming technique." },
-  { q: "Setting your social media to 'Private' means:", a: 0, options: ["Only approved followers can see your posts", "Nobody can find your account", "Your data is deleted after 30 days"], explain: "Private means only accepted followers see posts — but strangers can still send follow requests. Review who you accept carefully." },
-  { q: "It's safe to share your phone number with someone you've only met online if you've been talking for months.", a: 1, options: ["True — you know them well enough", "False — online time doesn't equal real trust"], explain: "Time spent talking online doesn't make someone safe. You still don't know who they truly are. Never share your phone number with online-only contacts." },
-  { q: "If someone online makes you feel uncomfortable, you should:", a: 2, options: ["Keep talking — maybe it will improve", "Delete the messages to avoid getting in trouble", "Screenshot evidence, block/report, and tell a trusted adult"], explain: "You are never in trouble for someone else's bad behavior. Screenshotting is important evidence. Always tell a trusted adult." },
-  { q: "A strong password should be:", a: 2, options: ["Your name + birth year", "The same password on every site", "A mix of 12+ characters, numbers, symbols — unique per account"], explain: "Weak passwords are easy to crack. Use a password manager and enable 2-factor authentication on all accounts." },
-  { q: "Location sharing (geotagging) in posts can be dangerous because:", a: 0, options: ["It tells strangers exactly where you are and your routine", "It uses too much phone battery", "It slows your internet connection"], explain: "Geotagging reveals your exact location and patterns. Turn off location services for social apps. Never post photos at home or school." },
-];
-let quizIdx = 0, quizCorrect = 0;
+function endRedFlag(totalFlags) {
+  const resultElement = document.getElementById('rf-result');
 
-function startQuiz() { quizIdx = 0; quizCorrect = 0; renderQuizQ(); }
+  if (rfFound >= totalFlags) {
+    resultElement.textContent = '🏆 You found all ' + totalFlags + ' red flags! Badge earned: 🔍 Scam Detector';
+    resultElement.style.color = 'var(--safe)';
+    gameState.badges.push('🔍 Scam Detector');
+  } else {
+    resultElement.textContent = 'Found ' + rfFound + '/' + totalFlags + ' red flags. Keep practicing!';
+    resultElement.style.color = 'var(--txt2)';
+  }
 
-function renderQuizQ() {
-  if (quizIdx >= quizData.length) { endQuiz(); return; }
-  const q = quizData[quizIdx];
-  const progress = document.getElementById('quiz-progress'); progress.innerHTML = '';
-  quizData.forEach((_, i) => { const d = document.createElement('div'); d.className = 'q-dot' + (i < quizIdx ? ' done' : i === quizIdx ? ' current' : ''); progress.appendChild(d); });
-  document.getElementById('quiz-q').textContent = q.q;
-  document.getElementById('quiz-explain').style.display = 'none';
-  document.getElementById('quiz-next-btn').style.display = 'none';
-  const opts = document.getElementById('quiz-opts'); opts.innerHTML = '';
-  q.options.forEach((o, i) => {
-    const btn = document.createElement('button'); btn.className = 'quiz-opt';
-    btn.innerHTML = `<span style="width:22px;height:22px;border-radius:50%;background:var(--surface3);display:inline-flex;align-items:center;justify-content:center;font-size:11px;font-family:'DM Mono',monospace;flex-shrink:0">${String.fromCharCode(65+i)}</span>${o}`;
-    btn.onclick = () => answerQuiz(i, q, btn); opts.appendChild(btn);
-  });
+  updateLandingStats();
 }
 
-function answerQuiz(idx, q, btn) {
-  document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
-  if (idx === q.a) { btn.classList.add('correct'); quizCorrect++; gameState.totalScore += 10; }
-  else { btn.classList.add('wrong'); document.querySelectorAll('.quiz-opt')[q.a].classList.add('correct'); }
-  const ex = document.getElementById('quiz-explain'); ex.textContent = '💡 ' + q.explain; ex.style.display = 'block';
-  document.getElementById('quiz-next-btn').style.display = 'block';
-}
-
-function nextQuizQ() { quizIdx++; renderQuizQ(); }
-
-function endQuiz() {
-  const pct = Math.round((quizCorrect / quizData.length) * 100);
-  if (pct >= 80) gameState.badges.push('🧠 Smart Reporter');
-  if (pct === 100) gameState.badges.push('🌟 Quiz Master');
-  gameState.totalScore += quizCorrect * 5;
-  showResults(pct >= 70 ? '🧠' : '📚', 'Quiz Done! ' + quizCorrect + '/' + quizData.length + ' correct', pct + '%', pct >= 70 ? 'Excellent! You know how to spot warning signs. Stay vigilant!' : 'You got ' + quizCorrect + ' right. Review the Safety Tips section to boost your knowledge.');
-}
-
-// ===== PROFILE BUILDER =====
-const profileSettings = [
-  { label: 'Account set to Private', safe: true, icon: '🔒', weight: 20 },
-  { label: 'Real name visible publicly', safe: false, icon: '👤', weight: -15 },
-  { label: 'Location/school in bio', safe: false, icon: '📍', weight: -20 },
-  { label: '2-Factor Authentication on', safe: true, icon: '🔐', weight: 15 },
-  { label: 'Strong unique password', safe: true, icon: '🔑', weight: 15 },
-  { label: 'Posts show your location (geotagging)', safe: false, icon: '📌', weight: -15 },
-  { label: 'Accepting DMs from strangers', safe: false, icon: '💬', weight: -10 },
-  { label: 'Profile photo is a cartoon/avatar', safe: true, icon: '🎭', weight: 10 },
-];
-
-function initProfileBuilder() {
-  const container = document.getElementById('profile-settings'); container.innerHTML = '';
-  profileSettings.forEach((s, i) => {
-    const row = document.createElement('div'); row.className = 'toggle-row';
-    row.innerHTML = `<span style="font-size:18px">${s.icon}</span><span style="flex:1;font-size:13px">${s.label}</span>
-      <label style="position:relative;width:40px;height:22px;cursor:pointer;flex-shrink:0">
-        <input type="checkbox" id="ps-${i}" ${s.safe ? 'checked' : ''} style="opacity:0;width:0;height:0;position:absolute" onchange="calcProfileScore()">
-        <span id="ps-track-${i}" style="position:absolute;inset:0;border-radius:100px;background:${s.safe ? 'var(--accent)' : 'var(--surface3)'}"></span>
-        <span id="ps-thumb-${i}" style="position:absolute;top:3px;left:${s.safe ? '21px' : '3px'};width:16px;height:16px;border-radius:50%;background:#fff;transition:left 0.2s"></span>
-      </label>`;
-    container.appendChild(row);
-    row.querySelector('input').addEventListener('change', () => {
-      const checked = row.querySelector('input').checked;
-      document.getElementById('ps-track-' + i).style.background = checked ? 'var(--accent)' : 'var(--surface3)';
-      document.getElementById('ps-thumb-' + i).style.left = checked ? '21px' : '3px';
-    });
-  });
-  calcProfileScore();
-}
-
-function calcProfileScore() {
-  let score = 50;
-  profileSettings.forEach((s, i) => {
-    const checked = document.getElementById('ps-' + i) && document.getElementById('ps-' + i).checked;
-    if (checked === s.safe) score += Math.abs(s.weight); else score -= Math.abs(s.weight) * 0.5;
-  });
-  score = Math.max(0, Math.min(100, Math.round(score)));
-  document.getElementById('profile-bar').style.width = score + '%';
-  document.getElementById('profile-bar').style.background = score >= 70 ? 'var(--safe)' : score >= 40 ? 'var(--warn)' : 'var(--danger)';
-  document.getElementById('profile-score-txt').textContent = score + '%';
-  document.getElementById('profile-rating-label').textContent = score >= 70 ? '✅ High Safety — Well Done!' : score >= 40 ? '⚠️ Moderate Risk — Check your settings' : '🚨 High Risk — Your profile is very exposed!';
-}
-
-// ===== TIPS =====
-const tips = [
-  { icon: '🤐', bg: 'rgba(124,92,252,0.12)', title: 'Never share personal info', body: 'Your school, address, phone number, and location are personal. Real friends already know these details — strangers never need them.' },
-  { icon: '🔒', bg: 'rgba(92,252,184,0.1)', title: 'Lock down your privacy settings', body: 'Set all social accounts to Private. Regularly review who follows you. Remove people you don\'t know in real life.' },
-  { icon: '🚩', bg: 'rgba(252,183,0,0.1)', title: 'Know the grooming red flags', body: 'Watch for: requests for secrecy, excessive flattery, gift offers, asking for photos, moving conversations to private apps, or making you feel special quickly.' },
-  { icon: '👣', bg: 'rgba(252,92,125,0.1)', title: 'Your digital footprint is permanent', body: 'Everything you post online stays forever — even after deleting. Screenshots can be taken. Think before you post anything.' },
-  { icon: '🆘', bg: 'rgba(252,61,92,0.1)', title: 'Always tell a trusted adult', body: 'If anything online feels wrong or uncomfortable, tell a parent, teacher, or counselor. You will NEVER be in trouble. They are there to help you.' },
-  { icon: '🔐', bg: 'rgba(124,92,252,0.1)', title: 'Use strong, unique passwords', body: 'Never reuse passwords. Use a mix of letters, numbers, and symbols. Enable 2-factor authentication on every account you have.' },
-  { icon: '📸', bg: 'rgba(252,183,0,0.08)', title: 'Never send photos to strangers', body: 'Never send any photo to someone you\'ve only met online — no matter what they offer or how long you\'ve talked.' },
-  { icon: '🌐', bg: 'rgba(92,252,184,0.08)', title: 'Online ≠ Real Life trust', body: 'Online friendships feel real, but you truly don\'t know who someone is online. Never meet an online stranger in person without a parent present.' },
-];
-
-function renderTips() {
-  const container = document.getElementById('tips-list'); container.innerHTML = '';
-  tips.forEach(t => {
-    const el = document.createElement('div'); el.className = 'tip-card';
-    el.innerHTML = `<div class="tip-icon" style="background:${t.bg}">${t.icon}</div><div><div class="tip-title">${t.title}</div><div class="tip-body">${t.body}</div></div>`;
-    container.appendChild(el);
-  });
-}
-
-// ===== HELP =====
-const helpResources = [
-  { icon: '📞', bg: 'rgba(252,61,92,0.1)', title: 'Talk to a Trusted Adult', sub: 'Parent, teacher, school counselor, or any adult you trust' },
-  { icon: '🌐', bg: 'rgba(124,92,252,0.1)', title: 'Report to CyberTipline (NCMEC)', sub: 'Report online exploitation at missingkids.org' },
-  { icon: '📱', bg: 'rgba(92,252,184,0.1)', title: 'Report on the Platform', sub: 'Every social app has a Report button — use it without hesitation' },
-  { icon: '📚', bg: 'rgba(252,183,0,0.1)', title: 'Internet Matters', sub: 'internetmatters.org — guides for teens and parents on online safety' },
-  { icon: '🤝', bg: 'rgba(124,92,252,0.1)', title: 'ThinkUKnow', sub: 'thinkuknow.co.uk — online safety education from law enforcement' },
-  { icon: '📋', bg: 'rgba(92,252,184,0.08)', title: 'What to Screenshot', sub: 'Save the conversation, profile URL, and username as evidence before reporting' },
-];
-
-function renderHelp() {
-  const container = document.getElementById('help-resources'); container.innerHTML = '';
-  helpResources.forEach(r => {
-    const el = document.createElement('div'); el.className = 'help-link';
-    el.innerHTML = `<div class="hl-icon" style="background:${r.bg}">${r.icon}</div><div><div style="font-weight:600;font-size:13px">${r.title}</div><div style="font-size:11px;color:var(--txt2)">${r.sub}</div></div>`;
-    container.appendChild(el);
-  });
-}
-
-// INIT
-renderTips();
-renderHelp();
 </script>
 </body>
 </html>
