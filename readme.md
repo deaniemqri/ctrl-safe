@@ -168,4 +168,4 @@ Adding more Malaysia-specific cyber safety resources
 Adding Bahasa Melayu language support
 Author
 
-Developed by Deanie Muqri as part of a cybersecurity awareness initiative project.
+Developed by Deanie Muqri as part of a cybersecurity assignment and awareness initiative project.
