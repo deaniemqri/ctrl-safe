@@ -75,6 +75,11 @@ The game includes:
 - Spot the Red Flag  
   A mini game where users identify suspicious signs in fake social media profiles.
 
+- Safety Quiz 
+  An Interactive safety quiz with instant feedback .
+
+
+
 These activities help users practise decision-making in realistic online situations.
 
 ## Technologies Used
@@ -120,7 +125,7 @@ Read the About section to understand the initiative.
 Review the Online Grooming Red Flags section.
 Learn the CTRL+SAFE safety steps.
 Open the interactive game section.
-Try the Chat Challenge and Spot the Red Flag game.
+Try the Chat Challenge, Spot the Red Flag game and Safety Quiz.
 Use the safety and reporting information when needed.
 Target Users
 
