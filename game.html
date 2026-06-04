@@ -193,6 +193,11 @@
     <div class="icon" style="background:rgba(252,183,0,0.12)">🚩</div>
     Spot the Red Flag
   </button>
+
+  <button class="nav-btn primary" onclick="gotoScreen('quiz-game'); startGameQuiz()">
+    <div class="icon" style="background:rgba(92,252,184,0.12)">❗</div>
+    Safety Quiz
+  </button>
 </div>
 
 </div>
@@ -246,6 +251,30 @@
     <div style="font-size:12px;color:var(--txt2);text-align:center;margin-top:8px" id="rf-result"></div>
   </div>
 
+  <!-- SAFETY QUIZ GAME -->
+<div id="quiz-game" class="screen" style="padding:16px;gap:12px">
+  <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+    <button class="back-btn" onclick="gotoScreen('landing')" style="font-size:16px">←</button>
+    <div>
+      <div class="section-title">❗ Safety Quiz</div>
+      <div class="section-sub">Choose the safest answer for each situation</div>
+    </div>
+  </div>
+
+  <div class="quiz-progress" id="game-quiz-progress"></div>
+
+  <div class="quiz-question" id="game-quiz-question">
+    Loading question...
+  </div>
+
+  <div class="quiz-options" id="game-quiz-options"></div>
+
+  <div id="game-quiz-feedback" style="font-size:12px;color:var(--txt2);min-height:40px;line-height:1.5;padding:10px;background:var(--surface2);border-radius:10px;display:none"></div>
+
+  <button class="continue-btn" id="game-quiz-next" style="display:none;margin-top:auto" onclick="nextGameQuizQuestion()">
+    Next Question →
+  </button>
+</div>
   
   <!-- RESULTS -->
   <div id="results-screen" class="screen">
@@ -311,6 +340,153 @@ const scenarios = [
     badFeedback: { icon: "🆘", title: "This Is Serious", score: "VERY RISKY", body: "NEVER send photos to online strangers. Even normal photos can be used to manipulate you. If this happens to you in real life, tell a trusted adult immediately — you are not in trouble." },
   }
 ];
+
+// ===== SAFETY QUIZ GAME =====
+const gameQuizData = [
+  {
+    question: "Someone online asks you to keep your friendship secret from your parents. What should you do?",
+    options: [
+      "Agree because they trust you",
+      "Be careful and tell a trusted adult",
+      "Continue chatting privately"
+    ],
+    correct: 1,
+    explanation: "Correct. Asking for secrecy is a major grooming red flag."
+  },
+  {
+    question: "A stranger offers free game credits if you send your phone number. What is the safest response?",
+    options: [
+      "Send the number",
+      "Ask for more rewards",
+      "Do not share personal information and block/report"
+    ],
+    correct: 2,
+    explanation: "Correct. Gifts or rewards can be used to pressure or manipulate someone."
+  },
+  {
+    question: "Someone asks which school you go to and what time you go home. Why is this risky?",
+    options: [
+      "It reveals your location and routine",
+      "It helps them become your friend",
+      "It is normal online conversation"
+    ],
+    correct: 0,
+    explanation: "Correct. School and routine information can be used to locate you."
+  },
+  {
+    question: "Someone says, 'If you really care about me, send me a private photo.' What tactic is this?",
+    options: [
+      "A harmless joke",
+      "Emotional pressure and manipulation",
+      "Normal friendship"
+    ],
+    correct: 1,
+    explanation: "Correct. Using guilt or emotion to force action is manipulation."
+  },
+  {
+    question: "What should you do if someone threatens to expose your messages or photos?",
+    options: [
+      "Send more photos so they stop",
+      "Delete everything and stay silent",
+      "Screenshot, block, report, and tell a trusted adult"
+    ],
+    correct: 2,
+    explanation: "Correct. Do not handle threats alone. Save evidence and get help."
+  }
+];
+
+let gameQuizIndex = 0;
+let gameQuizScore = 0;
+
+function startGameQuiz() {
+  gameQuizIndex = 0;
+  gameQuizScore = 0;
+  showGameQuizQuestion();
+}
+
+function showGameQuizQuestion() {
+  const questionElement = document.getElementById('game-quiz-question');
+  const optionsElement = document.getElementById('game-quiz-options');
+  const feedbackElement = document.getElementById('game-quiz-feedback');
+  const nextButton = document.getElementById('game-quiz-next');
+  const progressElement = document.getElementById('game-quiz-progress');
+
+  const current = gameQuizData[gameQuizIndex];
+
+  progressElement.innerHTML = '';
+  gameQuizData.forEach((_, index) => {
+    const dot = document.createElement('div');
+    dot.className = 'q-dot' + (index < gameQuizIndex ? ' done' : index === gameQuizIndex ? ' current' : '');
+    progressElement.appendChild(dot);
+  });
+
+  questionElement.textContent = current.question;
+  optionsElement.innerHTML = '';
+  feedbackElement.style.display = 'none';
+  feedbackElement.textContent = '';
+  nextButton.style.display = 'none';
+
+  current.options.forEach((option, index) => {
+    const button = document.createElement('button');
+    button.className = 'quiz-opt';
+    button.textContent = option;
+    button.onclick = () => answerGameQuiz(index, button);
+    optionsElement.appendChild(button);
+  });
+}
+
+function answerGameQuiz(selectedIndex, selectedButton) {
+  const current = gameQuizData[gameQuizIndex];
+  const feedbackElement = document.getElementById('game-quiz-feedback');
+  const nextButton = document.getElementById('game-quiz-next');
+  const buttons = document.querySelectorAll('#game-quiz-options .quiz-opt');
+
+  buttons.forEach(button => {
+    button.disabled = true;
+  });
+
+  if (selectedIndex === current.correct) {
+    selectedButton.classList.add('correct');
+    gameQuizScore++;
+    gameState.totalScore += 10;
+    feedbackElement.textContent = '✅ ' + current.explanation;
+    feedbackElement.style.color = 'var(--safe)';
+  } else {
+    selectedButton.classList.add('wrong');
+    buttons[current.correct].classList.add('correct');
+    feedbackElement.textContent = '⚠️ Not quite. ' + current.explanation;
+    feedbackElement.style.color = 'var(--warn)';
+  }
+
+  feedbackElement.style.display = 'block';
+  nextButton.style.display = 'block';
+  updateLandingStats();
+}
+
+function nextGameQuizQuestion() {
+  gameQuizIndex++;
+
+  if (gameQuizIndex < gameQuizData.length) {
+    showGameQuizQuestion();
+  } else {
+    finishGameQuiz();
+  }
+}
+
+function finishGameQuiz() {
+  const percentage = Math.round((gameQuizScore / gameQuizData.length) * 100);
+
+  if (percentage >= 80) {
+    gameState.badges.push('🧠 Safety Thinker');
+  }
+
+  showResults(
+    percentage >= 70 ? '🧠' : '📚',
+    'Quiz Complete!',
+    percentage + '%',
+    'You answered ' + gameQuizScore + '/' + gameQuizData.length + ' questions correctly. Keep practising online safety decisions.'
+  );
+}
 
 let chatStageIdx = 0;
 
